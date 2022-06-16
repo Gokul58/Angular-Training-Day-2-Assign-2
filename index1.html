@@ -1,0 +1,42 @@
+<!-- Q1> Given a string s, return the longest palindromic substring in s. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question 1</title>
+  </head>
+  <body>
+    <script>
+      function is_Palindrome(string) {
+        var reverse = string.split("").reverse().join("");
+        return string == reverse;
+      }
+
+      function longest_palindrome(string) {
+        var max_length = 0,
+          maxp = "";
+
+        for (var i = 0; i < string.length; i++) {
+          var substring = string.substr(i, string.length);
+
+          for (var j = substring.length; j >= 0; j--) {
+            var sub_subs_str = substring.substr(0, j);
+            if (sub_subs_str.length <= 1) continue;
+
+            if (is_Palindrome(sub_subs_str)) {
+              if (sub_subs_str.length > max_length) {
+                max_length = sub_subs_str.length;
+                maxp = sub_subs_str;
+              }
+            }
+          }
+        }
+
+        return maxp;
+      }
+      console.log(longest_palindrome("cbbd"));
+    </script>
+  </body>
+</html>
