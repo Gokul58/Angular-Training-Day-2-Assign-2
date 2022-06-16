@@ -1,0 +1,38 @@
+<!-- Q4> Create a function which will return the value at path in an Object -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question 4</title>
+  </head>
+  <body>
+    <script>
+      var deep_value = function (obj, path) {
+        for (
+          var i = 0, path = path.split("."), len = path.length;
+          i < len;
+          i++
+        ) {
+          obj = obj[path[i]];
+        }
+        return obj;
+      };
+
+      const obj = {
+        a: 1,
+        b: 2,
+        c: {
+          d: 4,
+          e: {
+            i: "Hey",
+          },
+        },
+        j: "k",
+      };
+
+      console.log(deep_value(obj,"c.e.i"));
+    </script>
+  </body>
+</html>
